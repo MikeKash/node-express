@@ -1,5 +1,5 @@
 const getHelloWorld = () => {
-  return "hello world";
+  return { ok: "hello world" };
 };
 
 const mainService = { getHelloWorld };

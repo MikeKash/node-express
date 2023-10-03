@@ -4,8 +4,7 @@ import cors from "cors";
 import config from "./config";
 import { isTestEnv } from "./utils/utils";
 
-import routesV1 from "./routes";
-import swaggerDocs from "./config/swagger";
+import routesV1 from "./routes/v1";
 
 const app = express();
 
@@ -31,12 +30,6 @@ app.use((_, res, next) => {
   next();
 });
 
-// set home route
-app.get("/", (_, res) => res.send({ ok: true }));
-
-//routes
-app.use("/v1", routesV1);
-
 // enable cors
 app.use(
   cors({
@@ -53,11 +46,13 @@ app.use(
   })
 );
 
-//add swagger docs
-swaggerDocs(app);
+// set home route
+app.get("/", (_, res) => res.send({ ok: true }));
 
+//routes
+app.use("/v1", routesV1);
 
-const start = (): void => {
+const start = () => {
   try {
     app.listen(config.port, () => {
       console.log("Server is running on port", config.port);

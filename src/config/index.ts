@@ -10,7 +10,7 @@ if (envFound.error) {
 
 const envSchema = z.object({
   NODE_ENV: z.enum(["production", "staging", "development"]).optional(),
-  PORT: z.string().default("5000"),
+  PORT: z.string().default("8000"),
 });
 
 try {
@@ -21,6 +21,6 @@ try {
 
 export default {
   env: process.env.NODE_ENV ?? "development",
-  port: process.env.PORT ?? "5000",
+  port: process.env.PORT ?? "8000",
   corsAllowedHosts: [""],
 };
