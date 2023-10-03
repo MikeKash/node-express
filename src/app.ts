@@ -5,6 +5,7 @@ import config from "./config";
 import { isTestEnv } from "./utils/utils";
 
 import routesV1 from "./routes";
+import swaggerDocs from "./config/swagger";
 
 const app = express();
 
@@ -26,16 +27,14 @@ app.use("/public", express.static("public"));
 
 // enable additional headers
 app.use((_, res, next) => {
-  res.header(
-    "Access-Control-Allow-Headers",
-    "x-access-token, Origin, Content-Type, Accept"
-  );
+  res.header("Access-Control-Allow-Headers", "*");
   next();
 });
 
 // set home route
 app.get("/", (_, res) => res.send({ ok: true }));
 
+//routes
 app.use("/v1", routesV1);
 
 // enable cors
@@ -53,6 +52,10 @@ app.use(
     },
   })
 );
+
+//add swagger docs
+swaggerDocs(app);
+
 
 const start = (): void => {
   try {
