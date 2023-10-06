@@ -6,19 +6,20 @@ extendZodWithOpenApi(z);
 
 registry.registerPath({
   method: "get",
-  path: "/main",
-  description: "Main route",
-  tags: ["Main"],
+  path: "/admin",
+  security: [{ bearerAuth: [] }],
+  description: "Admin route",
+  tags: ["Admin"],
   responses: {
     200: {
-      description: "Hello World!",
+      description: "Hello Admin!",
       content: {
         "application/json": {
           schema: z
             .object({
               ok: z.string(),
             })
-            .openapi("Main"),
+            .openapi("Admin"),
         },
       },
     },
