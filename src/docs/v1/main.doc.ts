@@ -1,24 +1,24 @@
-import { z } from "zod";
-import { registry } from "../../config/swagger";
-import { extendZodWithOpenApi } from "@asteasolutions/zod-to-openapi";
+import { z } from 'zod';
+import { registry } from '../../config/swagger';
+import { extendZodWithOpenApi } from '@asteasolutions/zod-to-openapi';
 
 extendZodWithOpenApi(z);
 
 registry.registerPath({
-  method: "get",
-  path: "/main",
-  description: "Main route",
-  tags: ["Main"],
+  method: 'get',
+  path: '/main',
+  description: 'Main route',
+  tags: ['Main'],
   responses: {
     200: {
-      description: "Hello World!",
+      description: 'Hello World!',
       content: {
-        "application/json": {
+        'application/json': {
           schema: z
             .object({
               ok: z.string(),
             })
-            .openapi("Main"),
+            .openapi('Main'),
         },
       },
     },

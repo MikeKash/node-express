@@ -1,10 +1,10 @@
-import express from "express";
-import helmet from "helmet";
-import cors from "cors";
-import config from "./config";
-import { isTestEnv } from "./utils/utils";
+import express from 'express';
+import helmet from 'helmet';
+import cors from 'cors';
+import config from './config';
+import { isTestEnv } from './utils/utils';
 
-import routesV1 from "./routes/v1";
+import routesV1 from './routes/v1';
 
 const app = express();
 
@@ -19,14 +19,14 @@ app.use(express.urlencoded({ extended: true }));
 
 // Useful if you're behind a reverse proxy (Heroku, Bluemix, AWS ELB, Nginx, etc)
 // It shows the real origin IP in the heroku or Cloudwatch logs
-app.enable("trust proxy");
+app.enable('trust proxy');
 
 // Function to serve all static files
-app.use("/public", express.static("public"));
+app.use('/public', express.static('public'));
 
 // enable additional headers
 app.use((_, res, next) => {
-  res.header("Access-Control-Allow-Headers", "*");
+  res.header('Access-Control-Allow-Headers', '*');
   next();
 });
 
@@ -34,28 +34,25 @@ app.use((_, res, next) => {
 app.use(
   cors({
     origin: (origin, callback) => {
-      if (
-        isTestEnv ||
-        (origin && config.corsAllowedHosts.includes(new URL(origin).host))
-      ) {
+      if (isTestEnv || (origin && config.corsAllowedHosts.includes(new URL(origin).host))) {
         callback(null, true);
       } else {
-        callback(new Error("Not allowed by CORS"));
+        callback(new Error('Not allowed by CORS'));
       }
     },
-  })
+  }),
 );
 
 // set home route
-app.get("/", (_, res) => res.send({ ok: true }));
+app.get('/', (_, res) => res.send({ ok: true }));
 
 //routes
-app.use("/v1", routesV1);
+app.use('/v1', routesV1);
 
 const start = () => {
   try {
     app.listen(config.port, () => {
-      console.log("Server is running on port", config.port);
+      console.log('Server is running on port', config.port);
     });
   } catch (error) {
     console.error(error);

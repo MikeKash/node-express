@@ -1,4 +1,4 @@
-import mainService from "../services/main.service";
+import mainService from '../services/main.service';
 
 export const getHelloWorld = (reg, res) => {
   const response = mainService.getHelloWorld();

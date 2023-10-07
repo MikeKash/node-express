@@ -1,4 +1,4 @@
-import adminService from "../services/admin.service";
+import adminService from '../services/admin.service';
 
 export const getSecret = (reg, res) => {
   const response = adminService.getSecret();

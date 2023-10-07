@@ -1,5 +1,5 @@
 const getSecret = () => {
-  return "You got my secret";
+  return 'You got my secret';
 };
 
 const adminService = { getSecret };

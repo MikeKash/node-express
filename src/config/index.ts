@@ -1,17 +1,17 @@
-import path from "path";
+import path from 'path';
 
-import dotenv from "dotenv";
-import { z } from "zod";
+import dotenv from 'dotenv';
+import { z } from 'zod';
 
-const envFound = dotenv.config({ path: path.join(__dirname, "../../.env") });
+const envFound = dotenv.config({ path: path.join(__dirname, '../../.env') });
 if (envFound.error) {
   throw new Error("⚠️  Couldn't find .env file  ⚠️");
 }
 
 const envSchema = z.object({
-  NODE_ENV: z.enum(["production", "staging", "development"]).optional(),
+  NODE_ENV: z.enum(['production', 'staging', 'development']).optional(),
   TOKEN_KEY: z.string(),
-  PORT: z.string().default("8000"),
+  PORT: z.string().default('8000'),
 });
 
 try {
@@ -21,8 +21,8 @@ try {
 }
 
 export default {
-  env: process.env.NODE_ENV ?? "development",
-  port: process.env.PORT ?? "8000",
-  tokenKey: process.env.TOKEN_KEY ?? "",
-  corsAllowedHosts: [""],
+  env: process.env.NODE_ENV ?? 'development',
+  port: process.env.PORT ?? '8000',
+  tokenKey: process.env.TOKEN_KEY ?? '',
+  corsAllowedHosts: [''],
 };

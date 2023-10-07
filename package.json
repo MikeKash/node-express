@@ -6,7 +6,11 @@
   "scripts": {
     "start": "npm run build && node build/app.js",
     "dev": "nodemon",
-    "build": "tsc"
+    "build": "tsc",
+    "lint": "eslint src/**/*.{ts,js,json}",
+    "lint:fix": "eslint src/**/*.{ts,js,json} --fix",
+    "format:check": "prettier --check 'src/**/*.{ts,js,json}'",
+    "format:fix": "prettier --write 'src/**/*.{ts,js,json}'"
   },
   "keywords": [],
   "author": "",
@@ -17,7 +21,13 @@
     "@types/node": "^20.8.0",
     "@types/swagger-jsdoc": "^6.0.1",
     "@types/swagger-ui-express": "^4.1.4",
+    "@typescript-eslint/eslint-plugin": "^6.7.4",
+    "@typescript-eslint/parser": "^6.7.4",
+    "eslint": "^8.51.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
     "nodemon": "^3.0.1",
+    "prettier": "^3.0.3",
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2"
   },
