@@ -9,7 +9,7 @@ if (envFound.error) {
 }
 
 const envSchema = z.object({
-  NODE_ENV: z.enum(['production', 'staging', 'development']).optional(),
+  NODE_ENV: z.enum(['production', 'staging', 'development', 'test']).optional(),
   TOKEN_KEY: z.string(),
   PORT: z.string().default('8000'),
 });

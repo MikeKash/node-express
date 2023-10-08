@@ -1,5 +1,5 @@
 import config from '../config';
 
-const isTestEnv = ['development', 'staging'].includes(config.env);
+const isTestEnv = ['development', 'staging', 'test'].includes(config.env);
 
 export { isTestEnv };
