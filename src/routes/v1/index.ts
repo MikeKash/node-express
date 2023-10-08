@@ -27,7 +27,6 @@ if (isTestEnv) {
     '/api-docs',
     (req, _, next) => {
       req.swaggerDoc = generator.generateDocument(swaggerDef(`${req.protocol}://${req.get('host')}`));
-      console.log('req.swaggerDoc', req.swaggerDoc);
       next();
     },
     swaggerUi.serve,

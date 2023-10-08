@@ -1,5 +1,6 @@
 import config from './config';
-import { createServer } from './server';
+import { logger } from './config/logger';
+import { createServer } from './server/server';
 
 const app = createServer();
 
@@ -9,10 +10,10 @@ app.get('/', (_, res) => res.send({ ok: true }));
 const start = () => {
   try {
     app.listen(config.port, () => {
-      console.log('Server is running on port', config.port);
+      logger.info('Server is running on port', config.port);
     });
   } catch (error) {
-    console.error(error);
+    logger.error(error);
     process.exit(1);
   }
 };

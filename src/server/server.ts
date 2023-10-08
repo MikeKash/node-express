@@ -2,9 +2,9 @@ import express from 'express';
 import helmet from 'helmet';
 import cors from 'cors';
 
-import routesV1 from './routes/v1';
-import { isTestEnv } from './utils/utils';
-import config from './config';
+import routesV1 from '../routes/v1';
+import { isTestEnv } from '../utils/utils';
+import config from '../config';
 
 export const createServer = () => {
   const server = express();

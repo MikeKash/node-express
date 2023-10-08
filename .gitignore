@@ -8,4 +8,7 @@ yarn-error.log*
 .env
 # build
 /build
+# test
 coverage
+# logs
+logs
