@@ -26,17 +26,6 @@ const enumerateErrorFormat = format((info) => {
 
 export const logger = createLogger({
   level: 'debug',
-  format: format.combine(
-    enumerateErrorFormat(),
-    format.colorize(),
-    format.splat(),
-    format.printf(({ level, message }) => `${level}: ${message}`),
-  ),
-  transports: [
-    dailyInfoFile,
-    dailyErrorFile,
-    new transports.Console({
-      stderrLevels: ['error'],
-    }),
-  ],
+  format: format.combine(format.colorize(), format.simple()),
+  transports: [dailyInfoFile, dailyErrorFile, new transports.Console()],
 });

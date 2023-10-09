@@ -8,9 +8,10 @@ const app = createServer();
 app.get('/', (_, res) => res.send({ ok: true }));
 
 const start = () => {
+  const port = config.port;
   try {
-    app.listen(config.port, () => {
-      logger.info(`Server is running on port ${config.port}`);
+    app.listen(port, () => {
+      logger.info('Server is running: ', { port });
     });
   } catch (error) {
     logger.error(error);
