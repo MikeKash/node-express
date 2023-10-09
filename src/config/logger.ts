@@ -3,7 +3,7 @@ import 'winston-daily-rotate-file';
 
 const dailyInfoFile = new transports.DailyRotateFile({
   level: 'info',
-  filename: 'application-%DATE%.log',
+  filename: 'logs/application-%DATE%.log',
   datePattern: 'YYYY-MM-DD-HH',
   maxSize: '20m',
   maxFiles: '14d',
@@ -11,7 +11,7 @@ const dailyInfoFile = new transports.DailyRotateFile({
 
 const dailyErrorFile = new transports.DailyRotateFile({
   level: 'error',
-  filename: 'application-%DATE%.log',
+  filename: 'logs/application-%DATE%.log',
   datePattern: 'YYYY-MM-DD-HH',
   maxSize: '10m',
   maxFiles: '14d',
@@ -32,5 +32,11 @@ export const logger = createLogger({
     format.splat(),
     format.printf(({ level, message }) => `${level}: ${message}`),
   ),
-  transports: [dailyInfoFile, dailyErrorFile],
+  transports: [
+    dailyInfoFile,
+    dailyErrorFile,
+    new transports.Console({
+      stderrLevels: ['error'],
+    }),
+  ],
 });

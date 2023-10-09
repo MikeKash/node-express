@@ -10,7 +10,7 @@ app.get('/', (_, res) => res.send({ ok: true }));
 const start = () => {
   try {
     app.listen(config.port, () => {
-      logger.info('Server is running on port', config.port);
+      logger.info(`Server is running on port ${config.port}`);
     });
   } catch (error) {
     logger.error(error);

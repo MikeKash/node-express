@@ -5,6 +5,7 @@ import cors from 'cors';
 import routesV1 from '../routes/v1';
 import { isTestEnv } from '../utils/utils';
 import config from '../config';
+import { errorHandler } from '../middleware/errorHandler';
 
 export const createServer = () => {
   const server = express();
@@ -48,5 +49,6 @@ export const createServer = () => {
   //routes
   server.use('/v1', routesV1);
 
+  server.use(errorHandler);
   return server;
 };
