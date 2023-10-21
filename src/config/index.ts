@@ -1,12 +1,12 @@
 import dotenv from 'dotenv';
 import { z } from 'zod';
 
-if (process.env.NODE_ENV !== 'production') {
-  const envFound = dotenv.config();
-  if (envFound.error) {
-    throw new Error("⚠️  Couldn't find .env file  ⚠️");
-  }
-}
+// if (!['test', 'production'].includes(process.env.NODE_ENV || '')) {
+//   const envFound = dotenv.config();
+//   if (envFound.error) {
+//     throw new Error("⚠️  Couldn't find .env file  ⚠️");
+//   }
+// }
 
 const envSchema = z.object({
   NODE_ENV: z.enum(['production', 'staging', 'development', 'test']).optional(),
