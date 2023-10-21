@@ -6,6 +6,8 @@ const config: Config = {
   testRegex: '.*/tests/.*.(t|j)sx?$',
   testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/build/'],
   collectCoverageFrom: ['src/**/*.[jt]s?(x)'],
+  modulePathIgnorePatterns: ['packages/.*/build'],
+  roots: ['<rootDir>/tests'],
 };
 
 export default config;
