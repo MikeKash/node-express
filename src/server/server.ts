@@ -36,12 +36,8 @@ export const createServer = () => {
   server.use(
     cors({
       credentials: true,
-      origin: (origin, callback) => {
-        if (isTestEnv || (origin && config.corsAllowedHosts.includes(new URL(origin).host))) {
-          callback(null, true);
-        } else {
-          callback(new Error('Not allowed by CORS'));
-        }
+      origin: (_, callback) => {
+        callback(null, true);
       },
     }),
   );
